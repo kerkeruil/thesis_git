@@ -61,7 +61,7 @@ class informativeness(object):
 			for code, category in zip(partition, tree):
 				p_i = self.get_probability(category)
 				p_j = self.make_p_j(partition, code, tree)
-				individual_communicative_cost.append(-math.log2(p_i/p_j))
+				individual_communicative_cost.append(-math.log2(p_i/p_j)*p_i)
 			comm_cost_tmp.append(sum(individual_communicative_cost))
 
 		return np.array(comm_cost_tmp)
