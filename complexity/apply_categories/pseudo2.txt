@@ -1,0 +1,31 @@
+def run(list_of_terms, dict_with_intensions, definitions, score):
+	defined_terms = []
+
+	for term in list_of_terms:
+		get intensions of term
+		if term has multiple intension:
+			if current_score > score:
+            	return score # There is no point in looking further since there is already a complexity with a lower score.
+			for i in possible_intensions:
+
+ 				# Example: the intension [[[12, 22], [23, 12]], [[22, 22]]] will result in 
+  				# a the list of defintions: [[[12, 22], [23, 12]], [12, 22], [23, 12], [22, 22]]].
+				definitions.append(all new intensions that come from the current intensions)
+
+                # By changing the possible intensions that can be picked for next round to only the one of the current loop
+                # we decrease the number of options. By using recursion we continue this process until all terms 
+                # have only one intension and then backtrack the other options one by one.
+				tmp_dict[term] = i
+				score = run(tmp_terms, tmp_dict, definitions, score)
+
+		else:
+			if intension not in definitions:
+				definitions.append(intension)
+
+	if there are no more possible solutions:
+		return len(definitions)
+	else:
+		# This means that we are somewhere in the terms list which means the current length cannot
+		# be returned as score, instead we return the score that was passed on from when the end 
+		# of the terms was reached.
+		return score

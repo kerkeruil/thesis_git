@@ -1,0 +1,27 @@
+
+
+CODE USED FOR EXTRACTING MATRIXES AND NAMES FROM CODE KEMP AND REGIER
+
+Paste this in the makecomp.m file right below  "cs = mergecs(cs, news, ps);"  around line 121. 
+It will pause after round 1, just press enter to start round two and then it will pause again. 
+Press ctrl + c to stop the program from running. The files can then be located in the output_concepts
+folder. This folder might have to be made manually. 
+
+(Of course this can also be used for getting data from depth 1. Just collect the data when the program pauses.)
+
+
+fprintf('\nNow starting depth = %d\n', d);
+fprintf('Size = %d', n1+n2);
+
+fid = fopen('output_concepts/names_charles_depth2.txt', 'w') ;
+dlmwrite('output_concepts/matrixes_charles_depth2.txt', '', 'w');
+for i = 1:size(cs.dependents{2})
+    dlmwrite('output_concepts/mcharles_depth2.txt', cs.preds{2}(:,:,i), '-append');
+    dlmwrite('output_concepts/mcharles_depth2.txt', ' ', '-append');
+    format = evalc('celldisp(cs.dependents{2}(i))');
+    fprintf(fid, format);
+    fprintf(fid, 'newname');
+end
+fclose(fid); 
+disp("PAUSING MATLAB");
+pause
