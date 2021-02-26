@@ -1,4 +1,32 @@
 J. van Oorschot (v.oorschot.jochem@gmail.com)
 
+### PLOT_TRADEOFF.PY
+This file calls data from:
+
+- communicative_cost/communicative_cost.txt 
+- complexity/apply_categories/results/complexity_scores.txt
 
 
+and plots the communicative cost against the complexity.
+
+The calculations for the communicative cost and complexity are respectively in the communicative_cost and the apply_categories folder. 
+
+
+### COMMUNICATIVE COST
+Call "get_informativeness.py" to calculate to informativeness of the partitions in "rwpartions.txt". It automatically plots the informativeness against the amount of unique words in the partitions which can be cancelled by adding "false" in the commandline.
+
+The "need_probs.csv" file contains the need probabilities for all the members of the trees from Alice and Bob. This information was (with "rwpartitions.txt") found in the code from Kemp and Regier.
+
+
+### COMPLEXITY
+The files "generate_concepts.py" or "generate_concepts_better_names.py" will combine primitives and concepts until depth 3. The primitives are specified in "primitives.py" and the rules to combine them in "rules.py". The differenc that comes with "generate_concepts_better_names.py" is that in the name of a concept the rule that was used is stored as well. If this file is called it is important to call the better_names version for calculating the complexity as well. After every depth both files filter duplicate matrices and in depth three the ego-relative extensions are extract and used for the filtering process. 
+
+The "tools.py" file contains helper functions for debugging or small operations. It is mainly used for the pause function, write to file function, extract ego-relative extensions function and remove duplicate function.  
+
+All output after generating the concepts is stored in the concepts folder where the name indicates if the better_names version is used. 
+
+
+### COMPLEXITY/APPLY_CATEGORIES
+The files "calculate_complexity_score.py" or "calculate_complexity_better_names.py" calculate the complexity of the partitions specified in the partitions folder. It used the categories in the categories folder which has to be filled manually. A copy past operation from the concepts folder will do the trick because the naming has been specified in the files themselves. The better_names file will only open the better_names files.
+
+All results are stored in the results folder. 
