@@ -193,12 +193,13 @@ def main():
     ts = Tools()
     partitions = read_in_partitions("partitions/rwpartitions.txt")
     categories = read_in_categories("categories/bn_matrix_depth_3")
-    names_of_categories = read_in_names("categories/bn_names_depth_3")[:3000]
-    egos_of_categories = get_ego_relatives_from_list(categories)[:3000]
+    names_of_categories = read_in_names("categories/bn_names_depth_3")
+    egos_of_categories = get_ego_relatives_from_list(categories)
 
     scores = []
     n = len(partitions)
     count = 0
+    max_configurations = 10000
     word_count = []
     for par in partitions:
         count+=1
@@ -206,7 +207,7 @@ def main():
             print("currently at partition {} of the {}".format(count, n))
         unique_terms = get_unique_terms_as_ego(par)
         dict_with_intensions = get_dict_with_intension(unique_terms, egos_of_categories, names_of_categories)
-        score = find_minimal_complexiy(unique_terms, dict_with_intensions)
+        score = find_minimal_complexiy(unique_terms, dict_with_intensions, max_configurations)
         scores.append(score)
         word_count.append(len(unique_terms))
 
