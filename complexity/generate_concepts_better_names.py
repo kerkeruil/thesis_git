@@ -113,12 +113,9 @@ def main(write):
         print("Executing depth {} took {}.".format(depth+1, end_time-start_time))
         print("Remaining categories:", len(categories))
 
-        if write == "True" and depth == 2:
-            categories = random.sample(categories, 5000)
+        if write == "True":
             ts.write_matrix_to_file(categories, path_matrix="concepts/bn_matrix_depth_" + str(depth+1), path_names="concepts/bn_names_depth_" + str(depth+1))
 
-        if depth == 1:
-            concepts = random.sample(concepts, 100)
 
 if __name__ == "__main__":
     args = sys.argv
